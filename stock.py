@@ -22,9 +22,9 @@ class GetStock:
         result = baostock.query_hs300_stocks().get_data()
         result.to_excel(r'''E:\桌面\PycharmProjects\getstock\test.xlsx''', index=False)
 
-    def get_stock_industry(self):
-        result = baostock.query_stock_industry(code='sh.600066').get_row_data()
-        industry = {'industry': result[3], 'industryClassification': result[4]}  # 行业，所属行业类别
+    def get_stock_industry(self, code):
+        result = baostock.query_stock_industry(code).get_row_data()
+        industry = result[3]
         return industry
 
 
@@ -34,6 +34,6 @@ class GetStock:
 
 if __name__ == '__main__':
     s = GetStock()
-    s.get_stock_industry()
+    s.get_stock_industry('')
 
 

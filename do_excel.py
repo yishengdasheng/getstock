@@ -12,8 +12,8 @@ from openpyxl import load_workbook
 class Stock_Data:
     def __init__(self):
         self.code = None
-        self.name = None
         self.code_name = None
+        self.industry = None
         self.code = None
         self.code = None
         self.code = None
@@ -34,16 +34,13 @@ class DoExcel:
         datas = []
         for i in range(2, sheet.max_row + 1):
             data = Stock_Data()
-            data.code = sheet.cell(i, 1).value
-            data.name = sheet.cell(i, 2).value
+            data.code = sheet.cell(i, 2).value
             data.code_name = sheet.cell(i, 3).value
             datas.append(data)
         return datas
 
     def write(self, row, data):
         excel, sheet = self.open_excel()
-        sheet.cell(row, 3).value = data.
-        sheet.cell(row, 4).value = latitude
-        sheet.cell(row, 5).value = district
-        sheet.cell(row, 6).value = adcode
+        sheet.cell(row, 4).value = data['industry']
+        # sheet.cell(row, 5).value = data['industryClassification']
         excel.save(self.name)
