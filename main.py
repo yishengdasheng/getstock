@@ -15,10 +15,26 @@ s = GetStock()
 # s.get_hs300_stocks()
 
 # 获取股票的行业属性，并插入excel
-excel = DoExcel()
-stocks = excel.read()
-n = 1
-for each in stocks:
-    n += 1
-    industry = s.get_stock_industry(each.code)
-    excel.write(n, industry)
+def get_industry():
+    excel = DoExcel()
+    stocks = excel.read()
+    n = 1
+    for each in stocks:
+        n += 1
+        industry = s.get_stock_industry(each.code)
+        # 获取最后一天的k线数据
+        excel.write_industry(n, industry)
+
+def get_k():
+    excel = DoExcel()
+    stocks = excel.read()
+    n = 1
+    for each in stocks:
+        n += 1
+        # 获取最后一天的k线数据
+        k_data = s.get_K_data(each.code, start_date='2020-10-23')
+        excel.write_k_data(n, k_data)
+
+
+
+get_k()

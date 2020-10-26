@@ -39,8 +39,21 @@ class DoExcel:
             datas.append(data)
         return datas
 
-    def write(self, row, data):
+    def write_industry(self, row, data):
         excel, sheet = self.open_excel()
         sheet.cell(row, 4).value = data['industry']
-        # sheet.cell(row, 5).value = data['industryClassification']
+        excel.save(self.name)
+
+    def write_k_data(self, row, data):
+        excel, sheet = self.open_excel()
+        sheet.cell(row, 5).value = data['open']
+        sheet.cell(row, 6).value = data['close']
+        sheet.cell(row, 7).value = data['high']
+        sheet.cell(row, 8).value = data['low']
+        sheet.cell(row, 9).value = data['preclose']
+        sheet.cell(row, 10).value = data['volume']
+        sheet.cell(row, 11).value = data['amount']
+        sheet.cell(row, 12).value = data['turn']
+        sheet.cell(row, 13).value = data['pctChg']
+        sheet.cell(row, 14).value = data['isST']
         excel.save(self.name)
